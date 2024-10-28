@@ -42,6 +42,11 @@ describe('Calculator', () => {
         expect(calc(2, '+', 3, '*', 4)).toBe(14);
     });
 
+    // Test case: numbers greater than 1000
+    it('should ignore numbers greater than 1000', () => {
+        expect(calc(2, '+', 1001, '+', 3)).toBe(5);
+    });
+
     // Test case: Invalid operator
     it('should throw an error for an invalid operator', () => {
         expect(() => calc(5, '$', 3)).toThrow('Invalid operator');
@@ -50,5 +55,11 @@ describe('Calculator', () => {
     // Test case: Invalid input type
     it('should throw an error for invalid input types', () => {
         expect(() => calc('2', '+', 3)).toThrow('Invalid input type');
+    });
+
+    // // Test case: Incorrect number of arguments
+    it('should throw an error for Incorrect number of arguments', () => {
+        expect(() => calc(2, '+')).toThrow('Incorrect number of arguments');
+        expect(() => calc(2)).toThrow('Incorrect number of arguments');
     });
 });
